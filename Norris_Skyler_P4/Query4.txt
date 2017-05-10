@@ -1,0 +1,4 @@
+SELECT F.Long_Desc, MAX(Holder.count)
+FROM F_DES F, (SELECT N.NDB_No AS id, COUNT(*) AS count FROM NUT_DATA N GROUP BY N.NDB_No) AS Holder
+WHERE Holder.id = F.NDB_No;
+

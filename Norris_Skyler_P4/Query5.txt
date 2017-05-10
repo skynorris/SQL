@@ -1,0 +1,6 @@
+SELECT  Temp.avg, F.Long_Desc, Hamburger.val/Hamburger2.ncount
+FROM F_DES F, (SELECT N.NDB_No as ndbno, (SUM(N.Nutr_Val) / COUNT(*)) AS avg FROM NUT_DATA N GROUP BY N.NDB_No) as Temp,
+	(SELECT N2.NDB_No as ndbno, SUM(N2.Nutr_Val) as val FROM NUT_DATA N2 WHERE N2.NDB_No = 21228) as Hamburger,
+	(SELECT N3.NDB_No AS ndbno, COUNT(*) AS ncount FROM NUT_DATA N3 WHERE N3.NDB_No = 21228) AS Hamburger2
+WHERE Temp.ndbno = F.NDB_No AND Temp.avg > Hamburger.val/Hamburger2.ncount;
+

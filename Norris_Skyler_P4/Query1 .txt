@@ -1,0 +1,3 @@
+SELECT N.Nutr_Val
+FROM NUT_DATA N, FOOD_DES F 
+WHERE N.Nutr_No = 205 and F.NDB_No = 21228 and N.NDB_No = F.NDB_No;

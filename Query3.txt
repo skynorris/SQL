@@ -1,0 +1,3 @@
+SELECT Holder.number, ND.NutrDesc, Holder.count
+FROM NUTR_DEF ND, (SELECT NDA.Nutr_No AS number, COUNT(*) AS count FROM NUT_DATA NDA GROUP BY NDA.Nutr_No) AS Holder
+WHERE Holder.number = ND.Nutr_No;

@@ -1,0 +1,3 @@
+SELECT F.Long_Desc FROM (SELECT N.NDB_No, SUM(N.Nutr_Val) as value FROM NUT_DATA N GROUP BY N.NDB_No) as Holder, FOOD_DES F
+WHERE F.NDB_No = Holder.NDB_No and 
+Holder.value = (SELECT MAX(Holder.value) FROM (SELECT N.NDB_No, SUM(N.Nutr_Val) as value FROM NUT_DATA N GROUP BY N.NDB_No) as Holder);
